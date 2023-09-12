@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Add CSS styles for improved formatting */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin: 20px auto;
+        }
+
+        /* Define a CSS class for styling the background color */
+        .highlight-text {
+            background-color: #FFD700;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>How would you like to improve the answers?</h1>
+        <form action='/selfimprove' method='get'>
+            <p><span class="highlight-text">Choose any method of improving:</span></p>
+            <input type="radio" id="myself" name="rating" value="myself">
+            <label for="good">I will improve myself</label><br>
+
+            <input type="radio" id="admin" name="rating" value="admin">
+            <label for="improve">Please ask admin to improve.</label><br>
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

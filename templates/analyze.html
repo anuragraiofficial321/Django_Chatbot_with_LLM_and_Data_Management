@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Answering Your Text...</title>
+    <style>
+        /* Add CSS styles for improved formatting */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ececec; /* Background color for the entire page */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff; /* Background color for the content container */
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        p.rating-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Button background color on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your {{ purpose }}</h1>
+        <p>
+            {{ analyzed_text }}
+        </p>
+
+        <form action='/feedback' method='get'>
+            <p class="rating-label">Rate the Question:</p>
+            <input type="radio" id="good" name="rating" value="good">
+            <label for="good">Good answer, I am satisfied.</label><br>
+
+            <input type="radio" id="improve" name="rating" value="improve">
+            <label for="improve">Can Be Improved</label><br>
+
+            <input type="radio" id="bad" name="rating" value="bad">
+            <label for="bad">It is not good enough</label><br>
+
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>

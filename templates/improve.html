@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improvement Form</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #4285F4;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="url"],
+        input[type="reference"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        /* Change the background color of the "Add URL" button to amber */
+        #add-url {
+            background-color: #FFA500; /* Change to your desired color */
+            color: white; /* Text color */
+        }
+
+        /* Change the background color of the "Add Reference URL" button to amber */
+        #add-reference-url {
+            background-color: #FFA500; /* Change to your desired color */
+            color: white; /* Text color */
+        }
+
+        input[type="submit"] {
+            background-color: #4285F4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #357AE8;
+        }
+
+        .error-message {
+            color: #FF0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi, Please choose one action:</h1>
+        <form id="improvement-form" action='/end' method='get'>
+            {% csrf_token %}
+            
+            <div>
+                <label for="improvement">Write Improvement:</label>
+                <textarea name='improvement' id="improvement" rows="6" placeholder="Write your improvement here..."></textarea>
+            </div>
+
+            <div>
+                <label for="url_link">Add URL:</label>
+                <div id="url-container">
+                    <input type="url" class="url-input" name="url_link[]" placeholder="Enter a URL">
+                </div>
+                <button type="button" id="add-url" style="background-color: #FFA500; color: white;">Add URL</button>
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <label for="reference_link">Provide Reference Links (optional):</label>
+                <div id="reference-container">
+                    <input type="reference" class="reference-input" name="reference_link[]" placeholder="Enter a Reference URL">
+                </div>
+                <button type="button" id="add-reference-url" style="background-color: #FFA500; color: white;">Add Reference URL</button>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <!-- This empty div creates a gap -->
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        {% if error_message %}
+        <div class="error-message">
+            {{ error_message }}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById("add-url").addEventListener("click", function () {
+            const urlContainer = document.getElementById("url-container");
+            const urlInput = document.createElement("input");
+            urlInput.type = "url";
+            urlInput.className = "url-input";
+            urlInput.name = "url_link[]";
+            urlInput.placeholder = "Enter a URL";
+            urlContainer.appendChild(urlInput);
+        });
+    </script>
+    <script>
+        document.getElementById("add-reference-url").addEventListener("click", function () {
+            const urlContainer = document.getElementById("reference-container");
+            const urlInput = document.createElement("input");
+            urlInput.type = "reference";
+            urlInput.className = "reference-input";
+            urlInput.name = "reference_link[]";
+            urlInput.placeholder = "Enter a Reference URL";
+            urlContainer.appendChild(urlInput);
+        });
+    </script>
+</body>
+</html>
